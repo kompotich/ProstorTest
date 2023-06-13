@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProstorTest.Core\ProstorTest.Core.csproj" />
     <ProjectReference Include="..\ProstorTest.Database\ProstorTest.Database.csproj" />
-    <ProjectReference Include="..\ProstorTest.Service\ProstorTest.Core.csproj" />
     <ProjectReference Include="..\ProstorTest.Shared\ProstorTest.Shared.csproj" />
   </ItemGroup>
 

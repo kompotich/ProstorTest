@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProstorTest.Database", "ProstorTest.Database\ProstorTest.Database.csproj", "{0BE6497F-2CE0-4910-B9B7-342B55A2404F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProstorTest.Core", "ProstorTest.Service\ProstorTest.Core.csproj", "{0925E1EC-B7F4-48A9-88F8-6A495CE76131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProstorTest.Core", "ProstorTest.Core\ProstorTest.Core.csproj", "{0925E1EC-B7F4-48A9-88F8-6A495CE76131}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProstorTest.Api", "ProstorTest.Api\ProstorTest.Api.csproj", "{28E615C6-7BE9-47E6-BCF8-1EB016D06777}"
 EndProject
