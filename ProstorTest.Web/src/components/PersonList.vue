@@ -1,23 +1,40 @@
 <template>
-    <div class="post">
+    <div class="persons">
         <div v-if="loading" class="loading">
-            Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationvue">https://aka.ms/jspsintegrationvue</a> for more details.
+            Загрузка...
         </div>
 
-        <div v-if="post" class="content">
-            <table>
+        <div class="person-add m-5">
+            <div class="row">
+                <div class="col-4">
+                    <input id="firstNameInput" v-model="editModel.firstName" type="text" placeholder="Введите имя" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <input id="lastNameInput" v-model="editModel.lastName" type="text" placeholder="Введите фамилию" class="form-control" />
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary" @click="createOrUpdatePerson(editModel, getPersons)">Добавить</button>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="persons" class="content m-5">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="person in post" :key="person.id">
+                    <tr v-for="person in persons" :key="person.id">
                         <td>{{ person.firstName }}</td>
                         <td>{{ person.lastName }}</td>
+                        <td>
+                            <button type="button" class="btn btn-secondary" @click="createOrUpdatePerson(editModel, getPersons)">Редактировать</button>
+                            <button type="button" class="btn btn-danger ml-2" @click="deletePerson(person.id, getPersons)">Удалить</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -32,31 +49,54 @@
         data() {
             return {
                 loading: false,
-                post: null
+                persons: [],
+                editModel: {
+                    id: 0,
+                    firstName: "",
+                    lastName: "",
+                    isUpdate: false
+                }
             };
         },
         created() {
-            // fetch the data when the view is created and the data is
-            // already being observed
-            this.fetchData();
-        },
-        watch: {
-            // call again the method if the route changes
-            '$route': 'fetchData'
+            this.getPersons();
         },
         methods: {
-            fetchData() {
-                this.post = null;
+            getPersons() {
+                this.persons = null;
                 this.loading = true;
 
-                fetch('persons')
+                fetch('person', { method: "get" })
                     .then(r => r.json())
                     .then(json => {
-                        this.post = json;
+                        this.persons = json;
                         this.loading = false;
                         return;
                     });
-            }
+            },
+            deletePerson(personId, callback) {
+                fetch(`person?personId=${personId}`, { method: "delete" })
+                    .then(() => {
+                        if (callback) {
+                            callback();
+                        }
+                    });
+            },
+            createOrUpdatePerson(model, callback) {
+                fetch('person', {
+                    method: model.isUpdate ? "put" : "post",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        id: model.id,
+                        firstName: model.firstName,
+                        lastName: model.lastName
+                    })
+                }).then(() => {
+                    if (callback) {
+                        callback();
+                    }
+                });
+            },
         },
     });
 </script>

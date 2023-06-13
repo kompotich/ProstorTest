@@ -1,17 +1,14 @@
 <template>
-  <PersonEdit />
-  <PersonList msg="Welcome to Your Vue.js App" />
+  <PersonList />
 </template>
 
 <script>
-import PersonEdit from './components/PersonEdit.vue'
 import PersonList from './components/PersonList.vue'
 
 export default {
   name: 'App',
   components: {
-    PersonEdit,
-    PersonList
+    PersonList,
   }
 }
 </script>

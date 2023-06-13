@@ -1,7 +1,7 @@
 using ProstorTest.Database;
 using ProstorTest.Database.Repositories;
-using ProstorTest.Service.MappingProfiles;
-using ProstorTest.Service.Services;
+using ProstorTest.Core.MappingProfiles;
+using ProstorTest.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

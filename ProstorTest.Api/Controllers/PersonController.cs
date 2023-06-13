@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ProstorTest.Service.Services;
+using ProstorTest.Core.Services;
 using ProstorTest.Shared;
 
 namespace ProstorTest.Api.Controllers;
@@ -31,5 +31,5 @@ public class PersonController : ControllerBase
     public async Task UpdateAsync([FromBody] Person person) => await _service.UpdateAsync(person);
 
     [HttpDelete]
-    public async Task DeleteAsync([FromBody] int personId) => await _service.DeleteAsync(personId);
+    public async Task DeleteAsync(int personId) => await _service.DeleteAsync(personId);
 }

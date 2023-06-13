@@ -3,7 +3,7 @@ using ProstorTest.Database.Entities;
 using ProstorTest.Database.Repositories;
 using ProstorTest.Shared;
 
-namespace ProstorTest.Service.Services;
+namespace ProstorTest.Core.Services;
 
 public class PersonService : IPersonService
 {

@@ -1,6 +1,6 @@
 ﻿using ProstorTest.Shared;
 
-namespace ProstorTest.Service.Services;
+namespace ProstorTest.Core.Services;
 
 public interface IPersonService
 {

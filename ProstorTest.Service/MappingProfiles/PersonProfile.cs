@@ -2,7 +2,7 @@
 using ProstorTest.Database.Entities;
 using ProstorTest.Shared;
 
-namespace ProstorTest.Service.MappingProfiles;
+namespace ProstorTest.Core.MappingProfiles;
 
 public class PersonProfile : Profile
 {
